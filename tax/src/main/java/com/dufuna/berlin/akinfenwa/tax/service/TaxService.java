@@ -1,6 +1,6 @@
 package com.dufuna.berlin.akinfenwa.tax.service;
 
-public interface TaxService {
+public interface  TaxService {
     /**
      * @param income
      * @return
