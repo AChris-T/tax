@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {
-    private int income= Integer.parseInt("50000");
-    private double tax = Integer.parseInt("5000");
+    private int income;
+    private double tax;
 }
 
