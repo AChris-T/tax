@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: tax
+  resource: tax
+  public-client: true
+  bearer-only: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jbdc.Driver
+    url: jbdc:mysql://localhost:3306/test?allowPublicKeyRetrival=true&useSSL=false
+    username: tax
+    password: tax
+
+    hikari:
+      initialization-fail-timeout: 0
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL%Dialect
+    generate-ddl: true
+    show-sql: true
+
+    hibernate:
+      ddl-auto: create

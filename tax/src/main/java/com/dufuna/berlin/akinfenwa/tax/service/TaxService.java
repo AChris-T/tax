@@ -5,5 +5,5 @@ public interface  TaxService {
      * @param income
      * @return
      */
-    double taxCalculator(int income);
+    double taxCalculator(double income);
 }

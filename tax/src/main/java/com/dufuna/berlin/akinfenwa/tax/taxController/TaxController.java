@@ -1,24 +1,27 @@
 package com.dufuna.berlin.akinfenwa.tax.taxController;
 
-import com.dufuna.berlin.akinfenwa.tax.dto.Request;
-import com.dufuna.berlin.akinfenwa.tax.service.TaxService;
+import com.dufuna.berlin.akinfenwa.tax.service.TaxServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.security.RolesAllowed;
 
 @RestController
 @RequestMapping("/tax")
 public class TaxController {
 
+    private final TaxServiceImp taxServiceImp;
     @Autowired
-    private  TaxService taxService;
-    @GetMapping("")
-    public Request taxCalculator(Request Request){
-                return com.dufuna.berlin.akinfenwa.tax.dto.Request.builder()
-                .income(Request.getIncome())
-                .tax(taxService.taxCalculator(Request.getIncome()))
-                .build();
+    public TaxController(TaxServiceImp taxServiceImp) {
+        this.taxServiceImp = taxServiceImp;
+    }
+
+    @GetMapping()
+    @RolesAllowed({"user","admin"})
+    @ResponseStatus(HttpStatus.OK)
+    public double taxCalculator(@RequestParam double income){
+        return taxServiceImp.taxCalculator(income);
     }
 
 }
