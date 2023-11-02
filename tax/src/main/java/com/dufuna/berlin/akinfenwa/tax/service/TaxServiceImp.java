@@ -10,7 +10,7 @@ public class TaxServiceImp implements TaxService{
      *
      */
     @Override
-    public double taxCalculator(int income) {
+    public double taxCalculator(double income) {
 
         double taxRange = (TaxEntity.tax2 -(TaxEntity.tax1 + 1)) * TaxEntity.rate2;
         double taxRange2 = taxRange+(TaxEntity.tax3 -(TaxEntity.tax2 + 1)) * TaxEntity.rate3;
